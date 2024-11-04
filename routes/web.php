@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 Route::get('restricted', function(){
     return redirect()->route('dashboard')->with('success', 'Anda berusia lebih dari 18 tahun!');
@@ -33,6 +34,9 @@ Route::middleware('auth')->group(function(){
     Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
     Route::get('/books/update/{id}', [BookController::class, 'edit'])->name('books.edit');
     Route::post('/books/update/{id}', [BookController::class, 'update'])->name('books.update');
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 

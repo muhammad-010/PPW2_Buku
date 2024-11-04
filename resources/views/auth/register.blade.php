@@ -44,6 +44,15 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label for="profile_photo" class="col-md-4 col-form-label text-md-end text-start">Profile Photo</label>
+                        <div class="col-md-6">
+                            <input type="file" class="form-control @error('profile_photo') is-invalid @enderror" id="profile_photo" name="profile_photo">
+                            @if ($errors->has('profile_photo'))
+                                <span class="text-danger">{{ $errors->first('profile_photo') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Register">
                     </div>
                 </form>
